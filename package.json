@@ -20,6 +20,7 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^8",
+    "inquirer-press-to-continue": "^1.1.4",
     "mysql2": "^2.3.3"
   }
 }
