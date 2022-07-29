@@ -76,8 +76,5 @@ This project is provisioned under the [MIT License](https://opensource.org/licen
 
 Do you want to help make this project better? Visit the the repo to check out existing issues or create a new branch to start working on a suggested feature
 
-# Tests
-None yet
-
 # Questions
 If you have any questions, please contact me on [Github](https://github.com/codewizard-dt) or [email](mailto:david@codewizard.app).
