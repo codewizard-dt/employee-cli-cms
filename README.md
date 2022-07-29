@@ -18,6 +18,9 @@ Manage your company's employees. View, add, update, and delete employees, as wel
 
 
 # Usage
+
+![Walkthrough GIF](./demo/employee-cms-demo.gif)
+
 ## View employees
 See all employees' ids and names, as well as their department, role, salary and manager.
 

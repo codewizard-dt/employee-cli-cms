@@ -4,7 +4,8 @@ INSERT INTO departments (name)
 VALUES ("Engineering"),
        ("Human Resources"),
        ("Sales"),
-       ("Customer Service");
+       ("Customer Service"),
+       ("Pet Care");
        
 INSERT INTO roles (title, salary, department_id)
 VALUES ("Engineering Lead", 120000, 1),
@@ -12,8 +13,8 @@ VALUES ("Engineering Lead", 120000, 1),
        ("Back End Developer", 90000, 1),
        ("Full Stack Developer", 120000, 1),
        ("Human Resources Lead", 90000, 2),
-       ("Benefits Manager", 60000, 2),
-       ("Hiring Manager", 70000, 2),
+       ("Benefits Liason", 60000, 2),
+       ("Hiring Liason", 70000, 2),
        ("Sales Lead", 100000, 3),
        ("Direct Salesperson", 30000, 3),
        ("Hot Leads Generator", 50000, 3),
@@ -35,6 +36,5 @@ VALUES ("David", "Taylor", 1, null),
        ("Michael", "Crighton", 10, 8),
        ("Cecilia", "Sirrius", 11, null),
        ("Steven", "Spielberg", 12, 11),
-       ("Nicola", "Tesla", 12, 11),
-       ("Beyonce", "Knowles", 13, 11);
+       ("Nicola", "Tesla", 12, 11);
        

@@ -78,15 +78,16 @@ async function mainMenu() {
   inquirer.prompt([
     newQuestion('action_name', 'list', 'What would you like to do?', {
       choices: [
-        'View employees',
-        'View roles',
+        'View all employees',
+        'View managers',
         'View departments',
+        'View roles',
         'View budgets',
-        'View employees by manager',
-        'View employees by role',
         'View employees by department',
-        'Add a role',
+        'View employees by role',
+        'View employees by manager',
         'Add a department',
+        'Add a role',
         'Add an employee',
         `Change an employee's role`,
         `Change an employee's manager`,
@@ -101,8 +102,8 @@ async function mainMenu() {
     /**
      * Retrieves all current lists for the statements below to use
      */
-    const [employeeList, roleList, departmentList] = await Promise.all([
-      getEmployeeList(), getRoleList(), getDepartmentList()
+    const [employeeList, managerList, roleList, departmentList] = await Promise.all([
+      getEmployeeList(), getManagerList(), getRoleList(), getDepartmentList()
     ])
 
     /**
@@ -110,8 +111,12 @@ async function mainMenu() {
      */
     switch (action_name) {
 
-      case 'View employees':
+      case 'View all employees':
         console.table('Current Employees', employeeList.map(mapCurrency('salary')))
+        keyPressThen(mainMenu)
+        break;
+      case 'View managers':
+        console.table('Current Managers', managerList.map(mapCurrency('average_salary')))
         keyPressThen(mainMenu)
         break;
       case 'View roles':
@@ -243,7 +248,7 @@ async function mainMenu() {
           newQuestion('employee', 'list', 'Select a employee:', {
             /** use `employeeList` from above as choices */
             choices: employeeList.map(employee => ({
-              name: `${employee.first_name} ${employee.last_name}`, value: employee
+              name: `${employee.first_name} ${employee.last_name} - ${employee.role}`, value: employee
             })),
           }),
           newQuestion('role_id', 'list', 'Select a new role:', {
@@ -269,7 +274,7 @@ async function mainMenu() {
           newQuestion('employee', 'list', 'Select a employee:', {
             /** use `employeeList` from above as choices */
             choices: employeeList.map(employee => ({
-              name: `${employee.first_name} ${employee.last_name}`, value: employee
+              name: `${employee.first_name} ${employee.last_name} - Current manager: ${employee.manager}`, value: employee
             })),
           }),
           newQuestion('manager_id', 'list', 'Select a new manager:', {
@@ -296,13 +301,13 @@ async function mainMenu() {
           newQuestion('role', 'list', 'Select a role:', {
             /** use `roleList` from above as choices */
             choices: roleList.map((role) => ({
-              name: role.title, value: role
+              name: `${role.title} (${role.num_employees} employees)`, value: role
             }))
           })
         ]).then(({ role }) => {
           /** CONFIRM delete with user */
           inquirer.prompt([
-            newQuestion('confirm', 'confirm', `** DELETE ${role.title} **`)
+            newQuestion('confirm', 'confirm', `** DELETE ${role.title} **`, { default: false })
           ]).then(async ({ confirm }) => {
             if (confirm) {
               /** Delete role only if confirmed */
@@ -319,13 +324,13 @@ async function mainMenu() {
           newQuestion('department', 'list', 'Select a department:', {
             /** use `departmentList` from above as choices */
             choices: departmentList.map((department) => ({
-              name: department.name, value: department
+              name: `${department.name} - ${department.number_employees} employees, ${department.number_roles} roles`, value: department
             }))
           })
         ]).then(({ department }) => {
           /** CONFIRM with user */
           inquirer.prompt([
-            newQuestion('confirm', 'confirm', `** DELETE ${department.name} **`)
+            newQuestion('confirm', 'confirm', `** DELETE ${department.name} **`, { default: false })
           ]).then(async ({ confirm }) => {
             if (confirm) {
               /** Delete department only if confirmed */
@@ -348,7 +353,7 @@ async function mainMenu() {
         ]).then(({ employee }) => {
           /** CONFIRM with user */
           inquirer.prompt([
-            newQuestion('confirm', 'confirm', `** DELETE ${employee.first_name} ${employee.last_name} **`)
+            newQuestion('confirm', 'confirm', `** DELETE ${employee.first_name} ${employee.last_name} **`, { default: false })
           ]).then(async ({ confirm }) => {
             if (confirm) {
               /** Delete employee only if confirmed */
