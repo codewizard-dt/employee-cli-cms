@@ -41,10 +41,14 @@ LEFT JOIN employees managers ON managers.id = employees.manager_id
 WHERE employees.role_id = ?
 
 -- What are the departments?
-SELECT departments.id, departments.name, COUNT(employees.id) as number_employees, COUNT(roles.id) as number_roles
-FROM departments
-INNER JOIN roles ON roles.department_id = departments.id
-LEFT JOIN employees ON employees.id = roles.id
+SELECT 
+  departments.id, 
+  departments.name,
+  COUNT(employees.id) as number_employees, 
+  COUNT(DISTINCT(roles.id)) as number_roles
+FROM employees
+INNER JOIN roles ON roles.id = employees.role_id
+INNER JOIN departments ON departments.id = roles.department_id
 GROUP BY departments.id
 
 -- Which employees are in this department

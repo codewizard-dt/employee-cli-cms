@@ -24,7 +24,17 @@ VALUES ("Engineering Lead", 120000, 1),
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES ("David", "Taylor", 1, null),
        ("Sally","Johnson", 2, 1),
+       ("Isaac","Asimov", 3, 1),
+       ("Rainer","Rilke", 4, 1),
+       ("Isaac","Newton", 4, 1),
        ("Keisha", "Johnson", 5, null),
+       ("Walt", "Whitman", 6, 5),
+       ("Keisha", "Johnson", 7, 5),
        ("Sayid", "Patel", 8, null),
-       ("Cecilia", "Sirrius", 11, null);
+       ("Daneille", "Steele", 9, 8),
+       ("Michael", "Crighton", 10, 8),
+       ("Cecilia", "Sirrius", 11, null),
+       ("Steven", "Spielberg", 12, 11),
+       ("Nicola", "Tesla", 12, 11),
+       ("Beyonce", "Knowles", 13, 11);
        

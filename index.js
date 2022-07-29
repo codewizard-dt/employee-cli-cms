@@ -165,7 +165,7 @@ async function mainMenu() {
         inquirer.prompt([
           newQuestion('department', 'list', `Select a department:`, {
             choices: departmentList.map((dep) => ({
-              name: dep.name, value: dep
+              name: `${dep.name} (${dep.number_employees} employees)`, value: dep
             }))
           })
         ]).then(async ({ department }) => {
