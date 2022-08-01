@@ -14,8 +14,6 @@ Manage your company's employees. View, add, update, and delete employees, as wel
 # Installation
 - Clone repository
 - Run `npm i` for dependencies
-- Add your MySQL connection details to `.env`
-
 
 # Usage
 
