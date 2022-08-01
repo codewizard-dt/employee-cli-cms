@@ -17,7 +17,8 @@ Manage your company's employees. View, add, update, and delete employees, as wel
 
 # Usage
 
-[Walk-through video](https://drive.google.com/file/d/1evvw2ZD2eNbwEwrgAbQWUnqqYIuJtkmA/view?usp=sharing)
+## [Walk-through video](https://drive.google.com/file/d/1evvw2ZD2eNbwEwrgAbQWUnqqYIuJtkmA/view?usp=sharing)
+
 ![Walk-through GIF](./demo/employee-cms-demo.gif)
 
 ## View employees
